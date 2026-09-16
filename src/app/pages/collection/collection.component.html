@@ -1,0 +1,74 @@
+@if (collection) {
+  <section class="collection-page">
+    <div class="collection-hero" [style.background-color]="collection.coverPlaceholder.bgColor">
+      @if (collection.coverImage) {
+        <img [src]="collection.coverImage" [alt]="collection.title" class="hero-bg-image">
+      }
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <a routerLink="/work" class="back-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+          All Collections
+        </a>
+        <h1 class="collection-title">{{ collection.title }}</h1>
+        <p class="collection-description">{{ collection.description }}</p>
+        <span class="collection-count">{{ allPhotos.length }} photographs</span>
+        <div class="collection-actions">
+          <button class="admin-action-btn" (click)="onAddPhoto()">+ Add Photo</button>
+          <button class="admin-action-btn" (click)="onEditCollection()">Edit Collection</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="collection-content container">
+      @if (tags.length > 1) {
+        <app-filter-bar
+          [tags]="tags"
+          [activeTag]="activeTag"
+          (tagChange)="onTagChange($event)">
+        </app-filter-bar>
+      }
+
+      <app-photo-grid
+        [photos]="filteredPhotos"
+        (photoClick)="openLightbox($event)"
+        (editClick)="onEditPhoto($event)">
+      </app-photo-grid>
+    </div>
+  </section>
+
+  <app-lightbox
+    [photo]="lightboxPhoto"
+    [photos]="filteredPhotos"
+    (close)="closeLightbox()"
+    (navigate)="navigateLightbox($event)"
+    (editClick)="onLightboxEdit()">
+  </app-lightbox>
+}
+
+@if (showPinDialog) {
+  <app-pin-dialog
+    (authenticated)="onAuthenticated()"
+    (cancel)="onPinCancel()">
+  </app-pin-dialog>
+}
+
+@if (showEditPhotoDialog) {
+  <app-edit-photo-dialog
+    [photo]="editingPhoto"
+    [collectionId]="collection?.id || ''"
+    (save)="onSavePhoto($event)"
+    (cancel)="showEditPhotoDialog = false"
+    (delete)="onDeletePhoto($event)">
+  </app-edit-photo-dialog>
+}
+
+@if (showEditCollectionDialog) {
+  <app-edit-collection-dialog
+    [collection]="collection || null"
+    (save)="onSaveCollection($event)"
+    (cancel)="showEditCollectionDialog = false">
+  </app-edit-collection-dialog>
+}

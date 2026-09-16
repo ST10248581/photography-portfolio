@@ -1,0 +1,14 @@
+<div class="filter-bar">
+  <button class="filter-tag"
+          [class.active]="activeTag === 'all'"
+          (click)="onTagClick('all')">
+    All
+  </button>
+  @for (tag of tags; track tag) {
+    <button class="filter-tag"
+            [class.active]="activeTag === tag"
+            (click)="onTagClick(tag)">
+      {{ tag }}
+    </button>
+  }
+</div>

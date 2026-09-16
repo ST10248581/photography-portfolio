@@ -1,0 +1,20 @@
+<a class="collection-card" [routerLink]="['/work', collection.slug]">
+  <div class="card-image" [style.background-color]="collection.coverPlaceholder.bgColor">
+    @if (collection.coverImage) {
+      <img [src]="collection.coverImage" [alt]="collection.title" class="cover-img">
+    } @else {
+      <span class="card-placeholder-label">{{ collection.coverPlaceholder.label }}</span>
+    }
+    <button class="edit-btn" (click)="onEditClick($event)" aria-label="Edit collection">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+      </svg>
+    </button>
+  </div>
+  <div class="card-info">
+    <h3 class="card-title">{{ collection.title }}</h3>
+    <p class="card-description">{{ collection.description }}</p>
+    <span class="card-count">{{ collection.photoCount }} photographs</span>
+  </div>
+</a>

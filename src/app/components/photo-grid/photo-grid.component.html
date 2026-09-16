@@ -1,0 +1,13 @@
+<div class="photo-grid" [class.masonry]="variant === 'masonry'">
+  @for (photo of photos; track photo.id; let i = $index) {
+    <div class="grid-item"
+         [class]="'ratio-' + photo.aspectRatio"
+         [style.animation-delay]="(i * 60) + 'ms'">
+      <app-photo-card
+        [photo]="photo"
+        (photoClick)="onPhotoClick($event)"
+        (editClick)="onEditClick($event)">
+      </app-photo-card>
+    </div>
+  }
+</div>

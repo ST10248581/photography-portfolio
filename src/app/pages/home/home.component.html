@@ -1,0 +1,56 @@
+<app-hero [config]="heroConfig" (editClick)="onEditHero()"></app-hero>
+
+<section class="selected-work">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Selected Work</h2>
+      <a routerLink="/work" class="section-link">View all collections</a>
+    </div>
+
+    <div class="selected-grid">
+      @for (photo of selectedWork; track photo.id; let i = $index) {
+        <div class="grid-cell"
+             [class]="'cell-' + (i + 1)"
+             [style.animation-delay]="(i * 80) + 'ms'">
+          <app-photo-card
+            [photo]="photo"
+            (photoClick)="openLightbox($event)"
+            (editClick)="onEditPhoto($event)">
+          </app-photo-card>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<app-lightbox
+  [photo]="lightboxPhoto"
+  [photos]="selectedWork"
+  (close)="closeLightbox()"
+  (navigate)="navigateLightbox($event)"
+  (editClick)="onLightboxEdit()">
+</app-lightbox>
+
+@if (showPinDialog) {
+  <app-pin-dialog
+    (authenticated)="onAuthenticated()"
+    (cancel)="onPinCancel()">
+  </app-pin-dialog>
+}
+
+@if (showEditPhotoDialog) {
+  <app-edit-photo-dialog
+    [photo]="editingPhoto"
+    (save)="onSavePhoto($event)"
+    (cancel)="showEditPhotoDialog = false"
+    (delete)="onDeletePhoto($event)">
+  </app-edit-photo-dialog>
+}
+
+@if (showEditHeroDialog) {
+  <app-edit-hero-dialog
+    [config]="heroConfig"
+    (save)="onSaveHero($event)"
+    (cancel)="showEditHeroDialog = false">
+  </app-edit-hero-dialog>
+}

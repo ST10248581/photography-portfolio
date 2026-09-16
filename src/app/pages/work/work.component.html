@@ -1,0 +1,40 @@
+<section class="work-page">
+  <div class="container">
+    <div class="page-header">
+      <div class="page-header-top">
+        <div>
+          <h1 class="page-title">Work</h1>
+          <p class="page-subtitle">Wildlife, nature, and exploration — organised by collection.</p>
+        </div>
+        <button class="admin-action-btn" (click)="onAddCollection()">+ Add Collection</button>
+      </div>
+    </div>
+
+    <div class="collections-grid">
+      @for (collection of collections; track collection.id; let i = $index) {
+        <div class="collection-item" [style.animation-delay]="(i * 100) + 'ms'">
+          <app-collection-card
+            [collection]="collection"
+            (editClick)="onEditCollection($event)">
+          </app-collection-card>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+@if (showPinDialog) {
+  <app-pin-dialog
+    (authenticated)="onAuthenticated()"
+    (cancel)="onPinCancel()">
+  </app-pin-dialog>
+}
+
+@if (showEditCollectionDialog) {
+  <app-edit-collection-dialog
+    [collection]="editingCollection"
+    (save)="onSaveCollection($event)"
+    (cancel)="showEditCollectionDialog = false"
+    (delete)="onDeleteCollection($event)">
+  </app-edit-collection-dialog>
+}

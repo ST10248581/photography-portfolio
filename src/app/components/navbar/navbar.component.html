@@ -1,0 +1,42 @@
+<nav class="navbar" [class.scrolled]="scrolled">
+  <div class="navbar-inner">
+    <a class="logo" routerLink="/" (click)="closeMenu()">TROY</a>
+
+    <div class="nav-links" [class.open]="mobileMenuOpen">
+      <div class="nav-item dropdown"
+           (mouseenter)="workDropdownOpen = true"
+           (mouseleave)="workDropdownOpen = false">
+        <a routerLink="/work"
+           routerLinkActive="active"
+           (click)="closeMenu()">Work</a>
+        <div class="dropdown-menu" [class.show]="workDropdownOpen">
+          @for (col of collections; track col.slug) {
+            <a [routerLink]="['/work', col.slug]"
+               (click)="closeMenu()">{{ col.title }}</a>
+          }
+        </div>
+      </div>
+      <a class="nav-item" routerLink="/about" routerLinkActive="active" (click)="closeMenu()">About</a>
+
+    </div>
+
+    <button class="menu-toggle"
+            [class.open]="mobileMenuOpen"
+            (click)="toggleMenu()"
+            aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+@if (mobileMenuOpen) {
+  <div class="mobile-overlay" (click)="closeMenu()"></div>
+  <div class="mobile-menu">
+    <a routerLink="/work" (click)="closeMenu()">Work</a>
+    @for (col of collections; track col.slug) {
+      <a class="sub-link" [routerLink]="['/work', col.slug]" (click)="closeMenu()">{{ col.title }}</a>
+    }
+    <a routerLink="/about" (click)="closeMenu()">About</a>
+  </div>
+}
