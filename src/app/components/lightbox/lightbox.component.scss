@@ -25,18 +25,6 @@
   z-index: 10;
 }
 
-.lightbox-edit {
-  color: var(--text-secondary);
-  padding: 8px;
-  transition: color var(--transition-fast);
-  opacity: 0.6;
-
-  &:hover {
-    color: var(--accent);
-    opacity: 1;
-  }
-}
-
 .lightbox-close {
   color: var(--text-secondary);
   padding: 8px;

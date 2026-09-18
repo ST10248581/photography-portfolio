@@ -14,7 +14,6 @@ export class LightboxComponent {
   @Input() photos: Photo[] = [];
   @Output() close = new EventEmitter<void>();
   @Output() navigate = new EventEmitter<Photo>();
-  @Output() editClick = new EventEmitter<void>();
 
   showExif = false;
 

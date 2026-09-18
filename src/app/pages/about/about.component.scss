@@ -16,20 +16,16 @@
   }
 }
 
-.photo-placeholder {
+.portrait {
+  display: block;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  max-width: 400px; // native size of the source — avoid upscaling
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
   background-color: #2a2e2a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
-  span {
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--text-muted);
+  @media (max-width: 768px) {
+    max-width: 280px;
   }
 }
 

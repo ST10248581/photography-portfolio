@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Collection } from '../../models/photo.model';
@@ -12,11 +12,4 @@ import { Collection } from '../../models/photo.model';
 })
 export class CollectionCardComponent {
   @Input({ required: true }) collection!: Collection;
-  @Output() editClick = new EventEmitter<Collection>();
-
-  onEditClick(event: MouseEvent) {
-    event.preventDefault();
-    event.stopPropagation();
-    this.editClick.emit(this.collection);
-  }
 }

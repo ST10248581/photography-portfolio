@@ -1,7 +1,6 @@
-import { ApplicationConfig, APP_INITIALIZER } from '@angular/core';
+import { ApplicationConfig } from '@angular/core';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { routes } from './app.routes';
-import { PhotoService } from './services/photo.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -9,11 +8,5 @@ export const appConfig: ApplicationConfig = {
       routes,
       withInMemoryScrolling({ scrollPositionRestoration: 'top' }),
     ),
-    {
-      provide: APP_INITIALIZER,
-      useFactory: (photoService: PhotoService) => () => photoService.init(),
-      deps: [PhotoService],
-      multi: true,
-    },
   ],
 };

@@ -28,18 +28,30 @@
 }
 
 .footer-logo {
-  display: block;
-  font-size: 1.125rem;
-  font-weight: 600;
-  letter-spacing: 0.25em;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   color: var(--text-primary);
   text-decoration: none;
   transition: color var(--transition-fast);
   margin-bottom: 8px;
 
+  strong {
+    font-weight: 600;
+  }
+
   &:hover {
     color: var(--accent);
   }
+}
+
+.footer-logo-mark {
+  flex-shrink: 0;
+  color: var(--accent);
 }
 
 .footer-tagline {

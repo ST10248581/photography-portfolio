@@ -86,30 +86,3 @@
   letter-spacing: 0.02em;
 }
 
-.edit-btn {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
-  border: none;
-  border-radius: 4px;
-  color: var(--text-secondary);
-  opacity: 0;
-  transition: opacity var(--transition-fast), color var(--transition-fast);
-  z-index: 2;
-  cursor: pointer;
-
-  .photo-card:hover & {
-    opacity: 1;
-  }
-
-  &:hover {
-    color: var(--accent);
-  }
-}

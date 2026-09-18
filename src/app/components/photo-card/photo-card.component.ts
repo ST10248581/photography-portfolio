@@ -13,14 +13,8 @@ export class PhotoCardComponent {
   @Input({ required: true }) photo!: Photo;
   @Input() showMeta = true;
   @Output() photoClick = new EventEmitter<Photo>();
-  @Output() editClick = new EventEmitter<Photo>();
 
   onClick() {
     this.photoClick.emit(this.photo);
-  }
-
-  onEditClick(event: MouseEvent) {
-    event.stopPropagation();
-    this.editClick.emit(this.photo);
   }
 }

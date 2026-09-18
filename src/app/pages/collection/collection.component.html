@@ -15,10 +15,6 @@
         <h1 class="collection-title">{{ collection.title }}</h1>
         <p class="collection-description">{{ collection.description }}</p>
         <span class="collection-count">{{ allPhotos.length }} photographs</span>
-        <div class="collection-actions">
-          <button class="admin-action-btn" (click)="onAddPhoto()">+ Add Photo</button>
-          <button class="admin-action-btn" (click)="onEditCollection()">Edit Collection</button>
-        </div>
       </div>
     </div>
 
@@ -31,11 +27,14 @@
         </app-filter-bar>
       }
 
-      <app-photo-grid
-        [photos]="filteredPhotos"
-        (photoClick)="openLightbox($event)"
-        (editClick)="onEditPhoto($event)">
-      </app-photo-grid>
+      @if (allPhotos.length) {
+        <app-photo-grid
+          [photos]="filteredPhotos"
+          (photoClick)="openLightbox($event)">
+        </app-photo-grid>
+      } @else {
+        <p class="collection-empty">This collection is still being put together — photographs coming soon.</p>
+      }
     </div>
   </section>
 
@@ -43,32 +42,6 @@
     [photo]="lightboxPhoto"
     [photos]="filteredPhotos"
     (close)="closeLightbox()"
-    (navigate)="navigateLightbox($event)"
-    (editClick)="onLightboxEdit()">
+    (navigate)="navigateLightbox($event)">
   </app-lightbox>
-}
-
-@if (showPinDialog) {
-  <app-pin-dialog
-    (authenticated)="onAuthenticated()"
-    (cancel)="onPinCancel()">
-  </app-pin-dialog>
-}
-
-@if (showEditPhotoDialog) {
-  <app-edit-photo-dialog
-    [photo]="editingPhoto"
-    [collectionId]="collection?.id || ''"
-    (save)="onSavePhoto($event)"
-    (cancel)="showEditPhotoDialog = false"
-    (delete)="onDeletePhoto($event)">
-  </app-edit-photo-dialog>
-}
-
-@if (showEditCollectionDialog) {
-  <app-edit-collection-dialog
-    [collection]="collection || null"
-    (save)="onSaveCollection($event)"
-    (cancel)="showEditCollectionDialog = false">
-  </app-edit-collection-dialog>
 }

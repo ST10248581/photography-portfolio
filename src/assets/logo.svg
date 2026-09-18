@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+     fill="none" stroke="#6b9e8a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+  <title>TK Photography</title>
+  <circle cx="12" cy="12" r="9.3"/>
+  <path d="M12 6.8 L3.95 7.35"/>
+  <path d="M7.497 9.4 L3.95 16.65"/>
+  <path d="M7.497 14.6 L12 21.3"/>
+  <path d="M12 17.2 L20.05 16.65"/>
+  <path d="M16.503 14.6 L20.05 7.35"/>
+  <path d="M16.503 9.4 L12 2.7"/>
+  <path d="M12 6.8 L7.497 9.4 L7.497 14.6 L12 17.2 L16.503 14.6 L16.503 9.4 Z" opacity="0.55"/>
+</svg>
