@@ -78,6 +78,12 @@
                       <span class="exif-value">{{ photo.exif.iso }}</span>
                     </div>
                   }
+                  @if (photo.exif.focalLength) {
+                    <div class="exif-item">
+                      <span class="exif-label">Focal Length</span>
+                      <span class="exif-value">{{ photo.exif.focalLength }}</span>
+                    </div>
+                  }
                 </div>
               </div>
             }

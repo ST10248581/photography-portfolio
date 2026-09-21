@@ -21,6 +21,7 @@ export interface ExifData {
   shutterSpeed?: string;
   aperture?: string;
   iso?: string;
+  focalLength?: string;
 }
 
 export interface PlaceholderStyle {

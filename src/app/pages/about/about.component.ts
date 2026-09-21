@@ -8,9 +8,4 @@ import { CommonModule } from '@angular/common';
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
 })
-export class AboutComponent {
-  socialLinks = [
-    { label: 'Email', href: 'mailto:hello@example.com', icon: 'email' },
-    { label: 'Instagram', href: '#', icon: 'instagram' },
-  ];
-}
+export class AboutComponent {}
