@@ -5,7 +5,7 @@ import { PhotoGridComponent } from '../../components/photo-grid/photo-grid.compo
 import { FilterBarComponent } from '../../components/filter-bar/filter-bar.component';
 import { LightboxComponent } from '../../components/lightbox/lightbox.component';
 import { PhotoService } from '../../services/photo.service';
-import { Photo, Collection } from '../../models/photo.model';
+import { Photo, Collection, GridItem } from '../../models/photo.model';
 
 @Component({
   selector: 'app-collection',
@@ -21,9 +21,14 @@ export class CollectionComponent implements OnInit {
   collection: Collection | undefined;
   allPhotos: Photo[] = [];
   filteredPhotos: Photo[] = [];
+  gridItems: GridItem[] = [];
   tags: string[] = [];
   activeTag = 'all';
   lightboxPhoto: Photo | null = null;
+  /** What the lightbox steps through — the loose photos, or one group's photos. */
+  lightboxPhotos: Photo[] = [];
+  /** Set while a group is open; switches the lightbox into carousel mode. */
+  lightboxGroupTitle: string | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -42,6 +47,7 @@ export class CollectionComponent implements OnInit {
     if (this.collection) {
       this.allPhotos = this.photoService.getPhotosByCollection(this.collection.id);
       this.filteredPhotos = [...this.allPhotos];
+      this.gridItems = this.photoService.toGridItems(this.filteredPhotos);
       this.tags = this.photoService.getTagsForCollection(this.collection.id);
       this.activeTag = 'all';
     }
@@ -50,10 +56,21 @@ export class CollectionComponent implements OnInit {
   onTagChange(tag: string) {
     this.activeTag = tag;
     this.filteredPhotos = this.photoService.filterByTag(this.allPhotos, tag);
+    this.gridItems = this.photoService.toGridItems(this.filteredPhotos);
   }
 
   openLightbox(photo: Photo) {
+    this.lightboxPhotos = this.gridItems.flatMap((item) => (item.kind === 'photo' ? [item.photo] : []));
+    this.lightboxGroupTitle = null;
     this.lightboxPhoto = photo;
+    document.body.style.overflow = 'hidden';
+  }
+
+  openGroup(photos: Photo[]) {
+    const groupId = photos[0]?.groupId;
+    this.lightboxPhotos = photos;
+    this.lightboxGroupTitle = (groupId && this.photoService.getGroup(groupId)?.title) || null;
+    this.lightboxPhoto = photos[0];
     document.body.style.overflow = 'hidden';
   }
 

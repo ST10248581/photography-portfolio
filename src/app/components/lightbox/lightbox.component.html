@@ -9,7 +9,7 @@
     </div>
 
     <div class="lightbox-content">
-      @if (hasPrev) {
+      @if (hasPrev && !isCarousel) {
         <button class="lightbox-nav prev" (click)="prev()" aria-label="Previous photo">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path d="M15 18l-6-6 6-6"/>
@@ -18,7 +18,14 @@
       }
 
       <div class="lightbox-main">
-        <div class="lightbox-image">
+        @if (isCarousel) {
+          <div class="carousel-header">
+            <span class="carousel-title">{{ groupTitle }}</span>
+            <span class="carousel-counter">{{ currentIndex + 1 }} / {{ photos.length }}</span>
+          </div>
+        }
+
+        <div class="lightbox-image" [class.carousel]="isCarousel">
           @if (photo.imagePath) {
             <img [src]="photo.imagePath" [alt]="photo.title" class="real-image">
           } @else {
@@ -27,7 +34,38 @@
               <span>{{ photo.placeholder.label }}</span>
             </div>
           }
+
+          @if (isCarousel) {
+            <button class="carousel-arrow prev" (click)="prev()" [disabled]="!hasPrev" aria-label="Previous photo">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M15 18l-6-6 6-6"/>
+              </svg>
+            </button>
+            <button class="carousel-arrow next" (click)="next()" [disabled]="!hasNext" aria-label="Next photo">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M9 18l6-6-6-6"/>
+              </svg>
+            </button>
+          }
         </div>
+
+        @if (isCarousel) {
+          <div class="carousel-strip" role="tablist" aria-label="Photos in this set">
+            @for (p of photos; track p.id; let i = $index) {
+              <button class="carousel-thumb" role="tab"
+                      [class.active]="p.id === photo.id"
+                      [attr.aria-selected]="p.id === photo.id"
+                      [attr.aria-label]="(i + 1) + ': ' + p.title"
+                      (click)="navigate.emit(p)">
+                @if (p.imagePath) {
+                  <img [src]="p.imagePath" [alt]="" loading="lazy">
+                } @else {
+                  <span class="thumb-placeholder" [style.background-color]="p.placeholder.bgColor"></span>
+                }
+              </button>
+            }
+          </div>
+        }
 
         <div class="lightbox-info">
           <div class="info-primary">
@@ -91,7 +129,7 @@
         </div>
       </div>
 
-      @if (hasNext) {
+      @if (hasNext && !isCarousel) {
         <button class="lightbox-nav next" (click)="next()" aria-label="Next photo">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path d="M9 18l6-6-6-6"/>

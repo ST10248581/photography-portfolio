@@ -2,7 +2,8 @@
   <section class="collection-page">
     <div class="collection-hero" [style.background-color]="collection.coverPlaceholder.bgColor">
       @if (collection.coverImage) {
-        <img [src]="collection.coverImage" [alt]="collection.title" class="hero-bg-image">
+        <img [src]="collection.coverImage" [alt]="collection.title" class="hero-bg-image"
+             [style.object-position]="collection.coverPosition">
       }
       <div class="hero-overlay"></div>
       <div class="hero-content">
@@ -29,8 +30,9 @@
 
       @if (allPhotos.length) {
         <app-photo-grid
-          [photos]="filteredPhotos"
-          (photoClick)="openLightbox($event)">
+          [items]="gridItems"
+          (photoClick)="openLightbox($event)"
+          (groupClick)="openGroup($event)">
         </app-photo-grid>
       } @else {
         <p class="collection-empty">This collection is still being put together — photographs coming soon.</p>
@@ -40,7 +42,8 @@
 
   <app-lightbox
     [photo]="lightboxPhoto"
-    [photos]="filteredPhotos"
+    [photos]="lightboxPhotos"
+    [groupTitle]="lightboxGroupTitle"
     (close)="closeLightbox()"
     (navigate)="navigateLightbox($event)">
   </app-lightbox>

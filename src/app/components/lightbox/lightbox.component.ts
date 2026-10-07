@@ -12,6 +12,8 @@ import { Photo } from '../../models/photo.model';
 export class LightboxComponent {
   @Input() photo: Photo | null = null;
   @Input() photos: Photo[] = [];
+  /** When set, the photos are one sub-collection and show as a carousel. */
+  @Input() groupTitle: string | null = null;
   @Output() close = new EventEmitter<void>();
   @Output() navigate = new EventEmitter<Photo>();
 
@@ -52,6 +54,10 @@ export class LightboxComponent {
     if (idx > 0) {
       this.navigate.emit(this.photos[idx - 1]);
     }
+  }
+
+  get isCarousel(): boolean {
+    return !!this.groupTitle && this.photos.length > 1;
   }
 
   get hasNext(): boolean {

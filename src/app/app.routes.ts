@@ -22,6 +22,11 @@ export const routes: Routes = [
       import('./pages/about/about.component').then((m) => m.AboutComponent),
   },
   {
+    path: 'pricing',
+    loadComponent: () =>
+      import('./pages/pricing/pricing.component').then((m) => m.PricingComponent),
+  },
+  {
     path: '**',
     redirectTo: '',
   },

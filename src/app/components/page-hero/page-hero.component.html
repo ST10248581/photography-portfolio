@@ -1,0 +1,17 @@
+<header class="page-hero">
+  <img [src]="imagePath" alt="" class="hero-bg" [style.object-position]="imagePosition" aria-hidden="true">
+  <div class="hero-overlay"></div>
+  <div class="hero-content container">
+    @if (kicker) {
+      <span class="kicker">{{ kicker }}</span>
+    }
+    <h1 class="hero-title">{{ title }}</h1>
+    @if (facts.length) {
+      <ul class="hero-facts">
+        @for (fact of facts; track fact) {
+          <li>{{ fact }}</li>
+        }
+      </ul>
+    }
+  </div>
+</header>

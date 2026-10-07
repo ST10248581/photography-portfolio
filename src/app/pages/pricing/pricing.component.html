@@ -1,0 +1,155 @@
+<section class="pricing-page">
+  <app-page-hero
+    imagePath="assets/photos/skies/fire-over-the-hills.jpg"
+    kicker="Durban, KwaZulu-Natal"
+    title="Pricing"
+    [facts]="['Hobbyist photographer', 'Digital photography', 'No weddings']">
+  </app-page-hero>
+
+  <div class="container">
+    <!-- 01 — Digital photographs -->
+    <section class="block" aria-labelledby="prints-heading">
+      <div class="block-head">
+        <span class="block-index">01</span>
+        <div>
+          <h2 id="prints-heading" class="block-title">Digital Photographs</h2>
+          <p class="block-lede">
+            Purchase individual photographs from the existing portfolio — each one a
+            high-resolution, edited file.
+          </p>
+        </div>
+      </div>
+
+      <ol class="bundles">
+        @for (bundle of bundles; track bundle.count; let last = $last) {
+          <li class="bundle" [class.feature]="last">
+            <span class="bundle-count">{{ bundle.count }}</span>
+            <span class="bundle-label">
+              {{ last ? bundle.label : (bundle.count === '1' ? 'Digital photo' : 'Digital photos') }}
+            </span>
+            <span class="bundle-price"><span class="currency">R</span>{{ bundle.price }}</span>
+            @if (perPhoto(bundle); as each) {
+              <span class="bundle-each">{{ each }}</span>
+            } @else {
+              <span class="bundle-each">&nbsp;</span>
+            }
+            <p class="bundle-note">{{ bundle.note }}</p>
+          </li>
+        }
+      </ol>
+
+      <div class="subjects">
+        <h3 class="subhead">Portfolio subjects include</h3>
+        <ul class="subject-list">
+          @for (subject of subjects; track subject.label) {
+            <li>
+              @if (subject.slug) {
+                <a [routerLink]="['/work', subject.slug]" class="subject">{{ subject.label }}</a>
+              } @else {
+                <span class="subject">{{ subject.label }}</span>
+              }
+            </li>
+          }
+        </ul>
+        <p class="fine-print">Portfolio availability may change as new photographs are added.</p>
+      </div>
+    </section>
+
+    <!-- 02 — Photoshoots -->
+    <section class="block" aria-labelledby="shoots-heading">
+      <div class="block-head">
+        <span class="block-index">02</span>
+        <div>
+          <h2 id="shoots-heading" class="block-title">Photoshoots</h2>
+          <p class="block-lede">
+            Sessions around Durban, delivered as edited digital photographs.
+          </p>
+        </div>
+      </div>
+
+      <div class="shoots">
+        @for (shoot of shoots; track shoot.name; let i = $index) {
+          <article class="shoot" [style.animation-delay]="(i * 90) + 'ms'">
+            <header class="shoot-head">
+              <h3 class="shoot-name">{{ shoot.name }} <span>Shoot</span></h3>
+              <span class="shoot-price"><span class="currency">R</span>{{ shoot.price }}</span>
+            </header>
+            <ul class="shoot-details">
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                {{ shoot.duration }}
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></svg>
+                {{ shoot.people }}
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg>
+                {{ shoot.locations }}
+              </li>
+              <li class="delivered">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 16l5-5 4 4 3-3 6 6"/><circle cx="16" cy="9" r="1.4"/></svg>
+                {{ shoot.delivered }}
+              </li>
+            </ul>
+          </article>
+        }
+      </div>
+
+      <!-- Speciality -->
+      <article class="speciality">
+        <div class="speciality-image">
+          <img src="assets/photos/people/tristan-in-the-forest.jpg" alt="Environmental portrait in Virginia Bush">
+        </div>
+        <div class="speciality-body">
+          <span class="kicker">Speciality Shoots</span>
+          <p class="speciality-price">From <span class="currency">R</span>500</p>
+          <h3 class="subhead">Suitable for</h3>
+          <ul class="speciality-list">
+            @for (item of specialities; track item) {
+              <li>{{ item }}</li>
+            }
+          </ul>
+          <p class="fine-print">Price depends on the shoot and the number of final photographs.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- 03 — Location & about -->
+    <section class="block closing" aria-labelledby="location-heading">
+      <div class="block-head">
+        <span class="block-index">03</span>
+        <div>
+          <h2 id="location-heading" class="block-title">Location</h2>
+        </div>
+      </div>
+
+      <div class="closing-grid">
+        <div class="location">
+          <svg class="location-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg>
+          <p class="location-main">Durban locations included.</p>
+          <p class="location-sub">Travel outside Durban may incur a small additional travel fee.</p>
+        </div>
+
+        <blockquote class="about-pricing">
+          <h3 class="subhead">About the pricing</h3>
+          <p>
+            I'm a <strong>hobbyist photographer building my portfolio</strong>, so my prices are
+            intentionally affordable compared with established professional photographers.
+          </p>
+        </blockquote>
+      </div>
+
+      <ul class="terms">
+        <li>Digital delivery only</li>
+        <li>Durban only</li>
+        <li>No weddings currently</li>
+      </ul>
+
+      <div class="cta">
+        <a class="cta-button" [href]="enquiryHref">Enquire about a shoot</a>
+        <a class="cta-link" routerLink="/work">Browse the portfolio</a>
+      </div>
+    </section>
+  </div>
+</section>

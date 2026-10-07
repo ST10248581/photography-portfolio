@@ -20,6 +20,7 @@ export class NavbarComponent {
     { title: 'Moody Landscapes', slug: 'landscapes' },
     { title: 'Macro / Tiny Worlds', slug: 'macro' },
     { title: 'Coastal / Fishing', slug: 'coastal' },
+    { title: 'Skyward', slug: 'skies' },
   ];
 
   @HostListener('window:scroll')

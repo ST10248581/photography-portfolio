@@ -30,6 +30,7 @@
           }
         </div>
       </div>
+      <a class="nav-item" routerLink="/pricing" routerLinkActive="active" (click)="closeMenu()">Pricing</a>
       <a class="nav-item" routerLink="/about" routerLinkActive="active" (click)="closeMenu()">About</a>
 
     </div>
@@ -51,6 +52,7 @@
     @for (col of collections; track col.slug) {
       <a class="sub-link" [routerLink]="['/work', col.slug]" (click)="closeMenu()">{{ col.title }}</a>
     }
+    <a routerLink="/pricing" (click)="closeMenu()">Pricing</a>
     <a routerLink="/about" (click)="closeMenu()">About</a>
   </div>
 }

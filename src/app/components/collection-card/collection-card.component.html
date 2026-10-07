@@ -1,7 +1,8 @@
 <a class="collection-card" [routerLink]="['/work', collection.slug]">
   <div class="card-image" [style.background-color]="collection.coverPlaceholder.bgColor">
     @if (collection.coverImage) {
-      <img [src]="collection.coverImage" [alt]="collection.title" class="cover-img">
+      <img [src]="collection.coverImage" [alt]="collection.title" class="cover-img"
+           [style.object-position]="collection.coverPosition">
     } @else {
       <span class="card-placeholder-label">{{ collection.coverPlaceholder.label }}</span>
     }

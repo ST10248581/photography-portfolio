@@ -1,0 +1,28 @@
+<button type="button" class="group-card" (click)="groupClick.emit()"
+        [attr.aria-label]="'Open ' + group.title + ' — ' + photos.length + ' photographs'">
+  <div class="collage" [class]="'count-' + tiles.length">
+    @for (photo of tiles; track photo.id; let last = $last) {
+      <div class="tile">
+        @if (photo.imagePath) {
+          <img [src]="photo.imagePath" [alt]="photo.title" loading="lazy">
+        } @else {
+          <div class="tile-placeholder" [style.background-color]="photo.placeholder.bgColor"></div>
+        }
+        @if (last && extra) {
+          <span class="more">+{{ extra }}</span>
+        }
+      </div>
+    }
+    <span class="count-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <rect x="7" y="7" width="13" height="13" rx="1"/>
+        <path d="M4 16V5a1 1 0 0 1 1-1h11"/>
+      </svg>
+      {{ photos.length }}
+    </span>
+  </div>
+  <div class="group-meta">
+    <span class="group-title">{{ group.title }}</span>
+    <span class="group-sub">{{ photos.length }} photographs · {{ photos[0].location }}</span>
+  </div>
+</button>
