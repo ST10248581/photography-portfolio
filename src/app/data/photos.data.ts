@@ -754,17 +754,23 @@ export const PHOTOS: Photo[] = [
 ];
 
 // Photos curated for the homepage selected work section.
-// Order matters — the grid gives cells 1, 4, 5 and 8 a double-width slot,
-// so those four should be landscape frames.
+// The portfolio's top 15. Order matters — on the 4-column grid, cells
+// 1, 4, 5, 8 and 9 take a double-width slot (15 + 5 = 20 = five full rows),
+// so those five should be landscape frames.
 export const SELECTED_WORK_IDS = [
-  'wd_bay_bluff',    // 1 — wide
-  'w_fish_eagle',    // 2
-  'wd_fig_path',     // 3
-  'w_lion_mist',     // 4 — wide
-  'mc_canna',        // 5 — wide
-  'ml_falls',        // 6
-  'pe_tristan',      // 7
-  'cf_break',        // 8 — wide
-  'w_vulture_face',  // 9
-  'mc_brackets',     // 10
+  'w_vervet_bars',       // 1 — wide
+  'wd_fig_path',         // 2
+  'w_bishop_2',          // 3
+  'cf_lighthouse',       // 4 — wide
+  'sk_fire',             // 5 — wide
+  'w_goshawk',           // 6
+  'ml_falls',            // 7
+  'cf_break',            // 8 — wide
+  'ml_stream',           // 9 — wide
+  'mc_brackets_canopy',  // 10
+  'w_wood_owl',          // 11
+  'cf_cosco',            // 12
+  'cf_lagoon',           // 13
+  'w_vulture_face',      // 14
+  'mc_canna',            // 15
 ];

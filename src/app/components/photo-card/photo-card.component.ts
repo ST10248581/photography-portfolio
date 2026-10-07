@@ -1,11 +1,12 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Photo } from '../../models/photo.model';
+import { WatermarkComponent } from '../watermark/watermark.component';
 
 @Component({
   selector: 'app-photo-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, WatermarkComponent],
   templateUrl: './photo-card.component.html',
   styleUrl: './photo-card.component.scss',
 })

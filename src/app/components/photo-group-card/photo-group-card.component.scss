@@ -80,6 +80,7 @@
 
 .count-badge {
   position: absolute;
+  z-index: 2; // above the watermark
   top: 10px;
   right: 10px;
   display: inline-flex;

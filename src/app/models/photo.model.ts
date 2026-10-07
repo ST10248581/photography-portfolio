@@ -56,9 +56,20 @@ export interface Collection {
   photoCount: number;
 }
 
+export interface WatermarkConfig {
+  enabled: boolean;
+  /** Text repeated across the image and set in the corner. */
+  text: string;
+  /** Opacity of the faint diagonal tiling, 0–1. Keep it low. */
+  tileOpacity: number;
+  /** Opacity of the corner mark, 0–1. */
+  markOpacity: number;
+}
+
 export interface HeroConfig {
   imagePath?: string;
   kicker: string;
-  title: string;
+  /** One entry per line of the big title. */
+  title: string[];
   subtitle: string;
 }

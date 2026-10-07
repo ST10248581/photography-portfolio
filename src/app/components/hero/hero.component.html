@@ -7,7 +7,11 @@
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <p class="hero-kicker">{{ config.kicker }}</p>
-    <h1 class="hero-title">{{ config.title }}</h1>
+    <h1 class="hero-title">
+      @for (line of config.title; track $index) {
+        <span class="hero-title-line">{{ line }}</span>
+      }
+    </h1>
     <div class="hero-divider"></div>
     <p class="hero-subtitle">{{ config.subtitle }}</p>
     <a routerLink="/work" class="hero-cta">

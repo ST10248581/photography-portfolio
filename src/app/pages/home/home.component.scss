@@ -58,66 +58,13 @@
 .grid-cell {
   animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
 
-  // Large feature image — spans 2 columns
-  &.cell-1 {
+  // Wide slots — 15 photos + 5 wide = 20 columns = five full rows of 4.
+  &.cell-1, &.cell-4, &.cell-5, &.cell-8, &.cell-9 {
     grid-column: span 2;
-  }
-
-  // Second image — single column
-  &.cell-2 {
-    grid-column: span 1;
-  }
-
-  // Third image — single column
-  &.cell-3 {
-    grid-column: span 1;
-  }
-
-  // Fourth — spans 2 columns
-  &.cell-4 {
-    grid-column: span 2;
-  }
-
-  // Fifth — spans 2 columns
-  &.cell-5 {
-    grid-column: span 2;
-  }
-
-  // Sixth
-  &.cell-6 {
-    grid-column: span 1;
-  }
-
-  // Seventh
-  &.cell-7 {
-    grid-column: span 1;
-  }
-
-  // Eighth — spans 2 columns
-  &.cell-8 {
-    grid-column: span 2;
-  }
-
-  // Ninth
-  &.cell-9 {
-    grid-column: span 1;
-  }
-
-  // Tenth
-  &.cell-10 {
-    grid-column: span 1;
-  }
-
-  @media (max-width: 1024px) {
-    &.cell-1, &.cell-4, &.cell-5, &.cell-8 {
-      grid-column: span 2;
-    }
   }
 
   @media (max-width: 540px) {
-    &.cell-1, &.cell-2, &.cell-3, &.cell-4,
-    &.cell-5, &.cell-6, &.cell-7, &.cell-8,
-    &.cell-9, &.cell-10 {
+    &.cell-1, &.cell-4, &.cell-5, &.cell-8, &.cell-9 {
       grid-column: span 1;
     }
   }

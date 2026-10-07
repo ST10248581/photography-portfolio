@@ -1,12 +1,13 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Photo, PhotoGroup } from '../../models/photo.model';
+import { WatermarkComponent } from '../watermark/watermark.component';
 
 /** Collage tile for a sub-collection — up to three frames, with a count badge. */
 @Component({
   selector: 'app-photo-group-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, WatermarkComponent],
   templateUrl: './photo-group-card.component.html',
   styleUrl: './photo-group-card.component.scss',
 })

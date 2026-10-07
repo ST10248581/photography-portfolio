@@ -19,6 +19,7 @@
 }
 
 .photo-image {
+  position: relative; // anchors the watermark overlay
   width: 100%;
   overflow: hidden;
 

@@ -1,9 +1,9 @@
 import { Collection, HeroConfig } from '../models/photo.model';
 
 export const HERO: HeroConfig = {
-  imagePath: 'assets/photos/landscapes/krantzkloof-river.jpg',
+  imagePath: 'assets/photos/coastal/break-on-the-rock.jpg',
   kicker: 'Wildlife · Nature · Exploration',
-  title: 'TROY',
+  title: ['TK', 'Photography'],
   subtitle: 'Photography from KwaZulu-Natal',
 };
 

@@ -1,0 +1,4 @@
+@if (config.enabled) {
+  <div class="wm-tiles" [style.background-image]="tile" [style.opacity]="config.tileOpacity"></div>
+  <span class="wm-mark" [style.opacity]="config.markOpacity">{{ config.text }}</span>
+}

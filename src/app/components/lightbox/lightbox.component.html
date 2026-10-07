@@ -27,7 +27,10 @@
 
         <div class="lightbox-image" [class.carousel]="isCarousel">
           @if (photo.imagePath) {
-            <img [src]="photo.imagePath" [alt]="photo.title" class="real-image">
+            <div class="image-frame">
+              <img [src]="photo.imagePath" [alt]="photo.title" class="real-image">
+              <app-watermark size="large"></app-watermark>
+            </div>
           } @else {
             <div class="placeholder-image" [style.background-color]="photo.placeholder.bgColor"
                  [class]="'ratio-' + photo.aspectRatio">

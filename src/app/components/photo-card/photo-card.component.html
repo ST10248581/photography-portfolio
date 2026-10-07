@@ -2,6 +2,7 @@
   @if (photo.imagePath) {
     <div class="photo-image" [class]="'ratio-' + photo.aspectRatio">
       <img [src]="photo.imagePath" [alt]="photo.title" loading="lazy">
+      <app-watermark></app-watermark>
     </div>
   } @else {
     <div class="photo-placeholder" [style.background-color]="photo.placeholder.bgColor">

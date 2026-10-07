@@ -1,0 +1,40 @@
+:host {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+.wm-tiles {
+  position: absolute;
+  inset: 0;
+  background-repeat: repeat;
+  background-size: 200px auto;
+}
+
+.wm-mark {
+  position: absolute;
+  right: 10px;
+  bottom: 8px;
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  white-space: nowrap;
+}
+
+:host(.large) {
+  .wm-tiles {
+    background-size: 320px auto;
+  }
+
+  .wm-mark {
+    right: 16px;
+    bottom: 12px;
+    font-size: 0.75rem;
+  }
+}

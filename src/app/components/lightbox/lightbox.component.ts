@@ -1,11 +1,12 @@
 import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Photo } from '../../models/photo.model';
+import { WatermarkComponent } from '../watermark/watermark.component';
 
 @Component({
   selector: 'app-lightbox',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, WatermarkComponent],
   templateUrl: './lightbox.component.html',
   styleUrl: './lightbox.component.scss',
 })
