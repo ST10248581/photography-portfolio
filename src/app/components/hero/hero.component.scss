@@ -1,11 +1,21 @@
 .hero {
   position: relative;
   height: 100vh;
+  height: 100svh; // excludes mobile browser chrome so the image isn't hidden behind the URL bar
   min-height: 720px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    min-height: 560px;
+  }
+
+  // Short landscape phones: fit the screen instead of forcing a scroll
+  @media (max-height: 500px) and (orientation: landscape) {
+    min-height: 400px;
+  }
 }
 
 .hero-bg {
@@ -19,6 +29,11 @@
   height: 100%;
   object-fit: cover;
   object-position: center 40%;
+
+  // Portrait screens crop the sides hard; keep the wave breaking on the rock in frame
+  @media (max-aspect-ratio: 1/1) {
+    object-position: 45% 50%;
+  }
 }
 
 .hero-overlay {
@@ -49,6 +64,7 @@
   flex-direction: column;
   align-items: center;
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6), 0 1px 6px rgba(0, 0, 0, 0.4);
+  padding: 0 24px;
 }
 
 .hero-kicker {
